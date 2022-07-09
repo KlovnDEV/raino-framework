@@ -11,6 +11,8 @@ function MP.Base.Start(self)
 end
 MP.Base.Start(self)
 
+
+-- EXPORT
 RegisterNetEvent('MP-Base:client:getObject')
 AddEventHandler('MP-Base:client:getObject', function(callback)
     callback(MP)

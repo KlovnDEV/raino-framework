@@ -10,7 +10,7 @@ AddEventHandler('MP-Base:ServerStart', function()
     end)
 end)
 
-
+-- CHANGE TO EXPORT
 RegisterNetEvent('MP-Base:server:getObject')
 AddEventHandler('MP-Base:server:getObject', function(callback)
     callback(MP)
