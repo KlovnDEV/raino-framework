@@ -1,5 +1,5 @@
-RegisterServerEvent('MP-Base:Char:Join')
-AddEventHandler('MP-Base:Char:Join', function()
+RegisterServerEvent('MP-Base:Char:Joined')
+AddEventHandler('MP-Base:Char:Joined', function()
     local src = source
     local id 
     for k,v in ipairs(GetPlayerIdentifiers(src)) do
@@ -25,14 +25,15 @@ AddEventHandler('MP-Base:Char:ServerSelect', function(cid) -- CID is for charact
     MP.DB.LoadCharacter(src, license, identifier, cid) -- ensure we get the correct player.
 end)
 
-MP.Functions.RegisterServerCallback('MP-Base:getChar', function(source, cb) -- will send back every character you created.
-    local id = GetPlayerIdentifiers(src)[1] -- steam id
+MP.Functions.RegisterServerCallback('MP-Base:getChar', function(source, cb)
+    local id = GetPlayerIdentifiers(source)[1]
 
     exports['ghmattimysql']:execute('SELECT * FROM players WHERE identifier = @identifier', {['@identifier'] = id}, function(result)
-        if result then 
+        if result then
             cb(result)
         end
     end)
+    
 end)
 
 RegisterServerEvent('MP-Base:deleteChar')
@@ -59,7 +60,7 @@ AddEventHandler('MP-Base:server:createCharacter', function(cData)
     local license = GetPlayerIdentifiers(src)[2]
     local name = GetPlayerName(src)
     local cid = cData.cid
-    local citizenid = '' .. cData.cid .. '-' .. identifier ..''
+    local citizenid = "".. cData.cid .. "-" .. identifier .. ""
     local charname = 'First: ' .. cData.firstname .. ' Last: ' .. cData.lastname .. ''
 
     exports['ghmattimysql']:execute('INSERT INTO players (`identifier`, `license`, `name`, `cid`, `cash`, `bank`, `firstname`, `lastname`, `sex`, `dob`, `phone`, `citizenid`) VALUES (@identifier, @license, @name, @cid, @cash, @bank, @firstname, @lastname, @sex, @dob, @phone, @citizenid)', {
@@ -67,8 +68,8 @@ AddEventHandler('MP-Base:server:createCharacter', function(cData)
         ['license'] = license,
         ['name'] = name,
         ['cid'] = cid,
-        ['cash'] = MP.Starting.Cash,
-        ['bank'] = MP.Starting.Bank,
+        ['cash'] = MP.NewCharacter.Cash,
+        ['bank'] = MP.NewCharacter.Bank,
         ['firstname'] = cData.firstname,
         ['lastname'] = cData.lastname,
         ['sex'] = cData.sex,
@@ -78,6 +79,5 @@ AddEventHandler('MP-Base:server:createCharacter', function(cData)
     })
 
     -- Logs for creation
-
     TriggerClientEvent('MP-Base:Char:setupCharacters', src) -- refresh the menu
 end)
