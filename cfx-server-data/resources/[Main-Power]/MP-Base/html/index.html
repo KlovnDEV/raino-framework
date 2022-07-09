@@ -11,37 +11,33 @@
     </head>
     <body class="body-wrapper">
         <div class="selection-wrapper" id="noselect">
-
-
             <div class="logo-container shown">
                 <img class="branding-logo" src="./img/logo.png" alt="logo">
             </div>
 
-
-
             <div class="multichar-container">
 
-                <!-- 4 Slots -->
+
                 <div class="character" data-charid="1">
-                    <button class="create-button" id="create-cid-1">New Character</button>
+                    <button class="create-button" id="create-cid-1" data-cid="1">New Character</button>
                     <div class="slot-name"><p><span id="slot-player-name"></span></p>
                     </div>
                 </div>
-
+        
                 <div class="character" data-charid="2">
-                    <button class="create-button" id="create-cid-2">New Character</button>
+                    <button class="create-button" id="create-cid-2" data-cid="2">New Character</button>
                     <div class="slot-name"><p><span id="slot-player-name"></span></p>
                     </div>
                 </div>
 
                 <div class="character" data-charid="3">
-                    <button class="create-button" id="create-cid-3">New Character</button>
+                    <button class="create-button" id="create-cid-3" data-cid="3">New Character</button>
                     <div class="slot-name"><p><span id="slot-player-name"></span></p>
                     </div>
                 </div>
 
                 <div class="character" data-charid="4">
-                    <button class="create-button" id="create-cid-4">New Character</button>
+                    <button class="create-button" id="create-cid-4" data-cid="4">New Character</button>
                     <div class="slot-name"><p><span id="slot-player-name"></span></p>
                     </div>
                 </div>
@@ -57,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="create-continer hidden" id="create-container">
+            <div class="create-container hidden" id="create-container">
                 <div class="create-character-modal" id="create-modal">
                     <div class="modal-contents">
                         <div class="create-header"><h3>Create Character</h3></div>
@@ -69,7 +65,6 @@
                             <select id="sex" name="sex" required>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
-                                <option value="Other">Other</option>
                             </select>
                             <input class="accept-create btn-accept" type="submit" value="Create">
                             <input class="cancel-button btn-cancel" type="button" value="Cancel">
