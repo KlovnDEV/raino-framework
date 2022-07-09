@@ -16,11 +16,11 @@ MP.Base.Start(self)
 RegisterNetEvent('MP-Base:client:getObject')
 AddEventHandler('MP-Base:client:getObject', function(callback)
     callback(MP)
-    print('Called Back ' .. MP .. )
+    print('Called Back ' .. MP .. '')
 end)
 
 
--- ADMIN NEW
+-- ADMIN 
 RegisterNetEvent("MP-Admin:updateGroup")
 AddEventHandler("MP-Admin:updateGroup", function(group)
 	MP.PlayerData.UserGroups = group
