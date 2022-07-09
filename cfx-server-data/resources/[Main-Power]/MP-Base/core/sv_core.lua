@@ -11,11 +11,16 @@ AddEventHandler('MP-Base:ServerStart', function()
 end)
 
 -- CHANGE TO EXPORT
-RegisterNetEvent('MP-Base:server:getObject')
-AddEventHandler('MP-Base:server:getObject', function(callback)
-    callback(MP)
+-- RegisterNetEvent('MP-Base:server:getObject')
+-- AddEventHandler('MP-Base:server:getObject', function(callback)
+--     callback(MP)
+-- end)
+
+exports('MP-GetObject', function()
+    return MP
 end)
 
+-- local MP = exports['MP-Base']:MP-GetObject()
 
 -- Commands 
 AddEventHandler('MP-Base:addCommand', function(command, callback, suggestion, args)

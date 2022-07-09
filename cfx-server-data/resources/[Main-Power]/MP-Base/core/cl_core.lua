@@ -13,12 +13,17 @@ MP.Base.Start(self)
 
 
 -- EXPORT
-RegisterNetEvent('MP-Base:client:getObject')
-AddEventHandler('MP-Base:client:getObject', function(callback)
-    callback(MP)
-    print('Called Back ' .. MP .. '')
+-- RegisterNetEvent('MP-Base:client:getObject')
+-- AddEventHandler('MP-Base:client:getObject', function(callback)
+--     callback(MP)
+--     print('Called Back ' .. MP .. '')
+-- end)
+
+exports('MP-GetObject', function()
+    return MP
 end)
 
+-- local MP = exports['MP-Base']:MP-GetObject()
 
 -- ADMIN 
 RegisterNetEvent("MP-Admin:updateGroup")
