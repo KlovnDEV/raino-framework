@@ -1,62 +1,65 @@
-var entered = false; 
-var rotate = 0;
+var entered = false;
 
-$(document).ready(function() {
-    $('.multichar-container').show(); // once you load in
-    $('.delete-container').hide();
-    $('.create-container').hide();
+var rotate_factor = 0;
 
-    $('.delete-container').removeClass('hidden');
-    $('.create-container').removeClass('hidden');
+$(document).ready(function () {
 
-    window.addEventListener('message', function(event){
+    //set prio for when player joins
+    $(".multichar-container").show();
+    $(".delete-container").hide();
+    $(".create-container").hide();
+
+    $(".create-container").removeClass("hidden");
+    $(".delete-container").removeClass("hidden");
+
+    window.addEventListener('message', function (event) {
         var data = event.data;
 
-        if (data.status === 'charSelect'){
+        if (data.type === "charSelect") {
             if (data.status == true) {
-                $('.multichar-container').fadeIn(250);
+                $(".multichar-container").fadeIn(250);
             } else {
-                $('.multichar-container').fadeOut(250);
+                $(".multichar-container").fadeOut(250);
             }
         }
 
-        if (data.type === 'setupCharacters') {
+        if (data.type === "setupCharacters") {
             var characters = data.characters;
             if (characters !== null) {
-                $.each(characters, function(index, char) {
+                $.each(characters, function (index, char) {
                     $('[data-charid=' + char.cid + ']').html('');
-                    $('[data-charid=' + char.cid + ']').html('' + 
-                    // formatted for easier reading
-                    '<div class="slot-name">' +
-                    '<div class="slot-name-wrapper"><p><span id="slot-player-name">' + char.firstname + ' ' + char.lastname +'</span></p></div>' +
-                    '<div class="playperma-wrapper"><button class="play-button" data-cid="' + char.cid + '">Select</button>' +
-                    '<button class="delete-button" data-cid="' + char.cid + '">Perma</button></div>' +
-                    '</div>'
+                    $('[data-charid=' + char.cid + ']').html('' +
+                        // formatted for easier reading
+                        '<div class="slot-name">' +
+                        '<div class="slot-name-wrapper"><p><span id="slot-player-name">' + char.firstname + ' ' + char.lastname +'</span></p></div>' +
+                        '<div class="playperma-wrapper"><button class="play-button" data-cid="' + char.cid + '">Select</button>' +
+                        '<button class="delete-button" data-cid="' + char.cid + '">Perma</button></div>' +
+                        '</div>'
                     );
                 })
             }
         }
 
-        $('.play-button').click(function(e){
+        $(".play-button").click(function (e) {
             e.preventDefault();
             var characterid = $(this).data('cid');
 
-            $.post('http://MP-Base/selectCharacter'), JSON.stringify({
+            $.post('http://MP-Base/selectCharacter', JSON.stringify({
                 cid: characterid
-                // close ui
-            })
+                // close UI
+            }));
+
             $(".multichar-container").fadeOut(250);
             $(".body-wrapper").hide();
-
         });
 
-        $('delete-button').click(function(e){
+        $(".delete-button").click(function (e) {
             e.preventDefault();
             var characterid = $(this).data('cid');
-
             $(".multichar-container").fadeOut(250);
             $(".delete-container").fadeIn(250);
             $(".accept-delete").data('cid', characterid);
+
         });
 
         document.onkeyup = function (data) {
@@ -71,9 +74,7 @@ $(document).ready(function() {
                     return
                 }
             }
-
         };
-
     });
 });
 
@@ -85,14 +86,15 @@ $('.branding-logo').click(function(){
     });
 });
 
+
 $("#accept-delete").click(function (e) {
     e.preventDefault();
     var characterid = $(this).data('cid')
-    $.post('http://MP-Base/deleteCharacter'), JSON.stringify({
+    $.post('http://MP-Base/deleteCharacter', JSON.stringify({
         cid: characterid,
         firstname: $('#firstname').val(),
         lastname: $('#lastname').val(),
-    });
+    }));
     entered = false;
     $(".delete-container").hide();
     location.reload();
@@ -111,6 +113,7 @@ $(".create-button").click(function (e) {
     $(".accept-create").data('cid', cid);
 });
 
+// SF - better functionality for my own processes
 $(".cancel-button").click(function (e) {
     e.preventDefault();
     var element = document.getElementById("create-modal");
@@ -127,7 +130,8 @@ $("#deny-delete").click(function (e) {
 });
 
 $(".accept-create").click(function (e) {
-    e.preventDefault()
+
+    e.preventDefault();
     var charid = $(this).data('cid');
     var data = {
         firstname: $('#firstname').val(),
@@ -137,10 +141,15 @@ $(".accept-create").click(function (e) {
         cid: charid
     };
 
+    // Need to sanitize these inputs...
+
     $.post('http://MP-Base/createCharacter', JSON.stringify({
         charData: data
     }))
-    entered = false; 
+    entered = false;
     $(".create-container").fadeOut(250);
+
     $(".multichar-container").fadeIn(250);
+
 });
+
