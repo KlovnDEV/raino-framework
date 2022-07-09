@@ -27,7 +27,7 @@ local function StartingRoleplay()
         while true do
             Citizen.Wait(1000)
             local pos = GetEntityCoords(PlayerPedId(), false)
-            local dist = GetDistanceBetweenCoords(GetEntityCoords(GetPlayedPed(-1)), 2729.47, 1514.56, 23.7, false)
+            local dist = GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 2729.47, 1514.56, 23.7, false)
             if dist > 150.0 then 
                 ClearAreaOfCops(pos, 400.0)
             else
