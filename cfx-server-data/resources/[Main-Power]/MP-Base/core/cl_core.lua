@@ -18,3 +18,10 @@ AddEventHandler('MP-Base:client:getObject', function(callback)
     callback(MP)
     print('Called Back ' .. MP .. )
 end)
+
+
+-- ADMIN NEW
+RegisterNetEvent("MP-Admin:updateGroup")
+AddEventHandler("MP-Admin:updateGroup", function(group)
+	MP.PlayerData.UserGroups = group
+end)
