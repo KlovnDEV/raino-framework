@@ -13,8 +13,9 @@ TriggerEvent('MP-Base:addGroupCommand', 'setgroup', 'admin', function(source,arg
         else
             -- Add Notification for no player
         end
-    end, function(source, args,user)
-        -- Add Notification for no permission
+    end
+end, function(source, args,user)
+    -- Add Notification for no permission
 end)
 
 TriggerEvent('MP-Base:addGroupCommand', 'console', 'admin', function(source, args, user)
