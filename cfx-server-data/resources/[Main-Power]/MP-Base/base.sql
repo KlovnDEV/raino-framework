@@ -17,14 +17,14 @@ CREATE TABLE `players` (
     `lastname` varchar(50) DEFAULT NULL,
     `sex` varchar(50) DEFAULT NULL,
     `dob` varchar(50) DEFAULT NULL,
-    `job` varchar(50) DEFAULT `unemployed`,
+    `job` varchar(50) DEFAULT 'unemployed',
     `phone` text DEFAULT NULL,
-    `citizenid` varchar(200) DEFAULT NULL,
+    `citizenid` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `ranking` (
     `identifier` varchar(40) DEFAULT NULL,
-    `usergroup` varchar(40) DEFAULT NULL,
+    `usergroup` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 ALTER TABLE `players`
