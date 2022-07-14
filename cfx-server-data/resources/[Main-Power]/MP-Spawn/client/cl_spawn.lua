@@ -3,7 +3,7 @@
 RegisterNetEvent('MP-Spawn:openMenu')
 AddEventHandler('MP-Spawn:openMenu', function()
     SetTimecycleModifier('hud_def_blur')
-    SetNUIMessage({action = 'display'})
+    SendNUIMessage({action = 'display'})
     SetNuiFocus(true, true)
 end)
 
@@ -44,7 +44,7 @@ function CameraPosition(x,y,z)
     Wait(500)
     DoScreenFadeIn(1000)
     SetCamActive(cam, false)
-    DestoryCam(cam, true)
+    DestroyCam(cam, true)
     DisplayHud(true)
     DisplayRadar(true)
 end

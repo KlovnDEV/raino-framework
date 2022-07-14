@@ -8,8 +8,8 @@ MP.DB.LoadCharacter = function(source, license, identifier, cid)
         license = license,
         cid = cid,
         name = GetPlayerName(src),
-        cash = MP.Starting.Cash,
-        bank = MP.Starting.Bank,
+        cash = MP.NewCharacter.Cash,
+        bank = MP.NewCharacter.Bank,
         citizenid = '' .. cid .. '-' .. identifier .. '',
     }
 

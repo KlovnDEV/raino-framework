@@ -7,7 +7,7 @@ files {
 	'html/index.html',
 	'html/scripts.js',
 	'html/style.css',
-	'html/spawnimage.png'
+	'html/spawnmenu.png'
 }
 
 client_scripts {

@@ -105,7 +105,8 @@ RegisterNUICallback('selectCharacter', function(data)
     local cid = tonumber(data.cid)
     SelectChar(false)
     TriggerServerEvent('MP-Base:Char:ServerSelect', cid)
-    -- TriggerEvent('MP-Spawn:openMenu') add menu to spawn
+    -- Make sure open menu
+    TriggerEvent('MP-Spawn:openMenu') 
     SetTimecycleModifier('default')
     SetCamActive(cam, false)
     DestroyCam(cam, false)
