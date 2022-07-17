@@ -44,8 +44,9 @@ $(document).ready(function(){
         if (clicked == null) {
             $('.spawn-box').hide
         } else {
+            $('.spawn-box').html('<button class="spawn-btn green spawnBtn" onclick="Spawn(this)"> <i class="fas fa-map-marked-alt"></i>Spawn Here: <span class="spawn-name"> ' + $(this).data('info') + ' </span></button>');
             $('.spawnBtn').data('spawn-name', $(this).data('location'))
-            $('spawn-box').fadeIn(100);
+            $('.spawn-box').fadeIn(100);
         }
     });
 
