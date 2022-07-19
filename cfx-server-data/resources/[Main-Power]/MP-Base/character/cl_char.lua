@@ -101,6 +101,15 @@ AddEventHandler('MP-Base:Char:setupCharacters', function()
     end)
 end)
 
+-- EXPORT
+exports('MP-Base:ChangeChar', function()
+    TriggerEvent('MP-Base:Char:setupCharacters')
+end)
+
+-- use exports['MP-Base']:MP-Base:ChangeChar() to change character
+
+
+
 RegisterNUICallback('selectCharacter', function(data)
     local cid = tonumber(data.cid)
     SelectChar(false)
