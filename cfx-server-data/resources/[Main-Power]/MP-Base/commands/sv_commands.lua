@@ -25,6 +25,15 @@ end, function(source, args, user)
     -- Add Notification for no permission
 end)
 
+
+-- Dev Coords
+-- MP-Admin:Client:SaveCoords
+TriggerEvent('MP-Base:addGroupCommand', 'sc', 'admin', function(source,args, user)
+    local src = source
+    TriggerClientEvent('MP-Admin:Client:SaveCoords', src)
+end)
+
+
 -- prio 
 
 TriggerEvent('MP-Base:addGroupCommand', 'EditPrio', 'admin', function(source,args, user)
