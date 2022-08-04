@@ -2,7 +2,7 @@ local function StartingRoleplay()
 
     Citizen.CreateThread(function()
         for i = 1, 25 do
-            EnableDispatchService(i,25)
+            EnableDispatchService(i,false) -- ty tuggummi for noticing error
         end
 
         for i = 0, 255 do 
