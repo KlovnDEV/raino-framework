@@ -1,2 +1,4 @@
 citizen/system_resources/
 cfx-server-data/server.cfg
+cfx-server-data/server.cfg
+*.cfg
